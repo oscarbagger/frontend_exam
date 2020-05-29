@@ -5,6 +5,19 @@ window.addEventListener("DOMContentLoaded", start);
 let jsonData = [];
 const settings = settingsObject();
 
+let beerInOrder = [];
+
+/*
+function BeerOrder(beerArr, id) {
+  beerInOrder = beerArr;
+  this.cardtext = text;
+  this.points = points;
+  this.id = id;
+  amountOFType(type) {
+    
+  }
+} */
+
 function start() {
   getJsonData();
 }
@@ -15,13 +28,47 @@ function submitFormData() {
     user.name = elements.name.value;
     user.email = elements.email.value;
     user.company = elements.company.value;
-    user.job = elements.job.value;
+    order.beerInOrder = beerInOrder;
     console.log(user);
-    post(user); */
+    post(order); */
+}
+
+function showBeers() {
+  let temp = document.querySelector("template");
+  let beerList = jsonData;
+  beerList.forEach((beer) => {
+    let clone = temp.cloneNode(true).content;
+    let amount = clone.querySelector(".beerAmount");
+    clone.querySelector(".beerName").textContent = beer.name;
+    clone.querySelector(".beerAlc").textContent = "Alc. " + beer.alc + "% vol";
+    clone.querySelector(".beerDesc").textContent =
+      beer.description.overallImpression;
+    clone.querySelector(".beerLabel").src = "/images/" + beer.label;
+    clone.querySelector(".beerLabel").alt = beer.label;
+
+    clone.querySelector(".beerAdd").addEventListener("click", () => {
+      amount.value++;
+    });
+    clone.querySelector(".beerSubtract").addEventListener("click", () => {
+      if (amount.value > 1) {
+        amount.value--;
+      }
+    });
+    clone.querySelector(".beerOrder").addEventListener("click", () => {
+      let n = amount.value;
+      while (n > 0) {
+        beerInOrder.push(beer.name);
+        n--;
+      }
+      amount.value = 1;
+      console.log(beerInOrder);
+    });
+    document.querySelector("#beerList").appendChild(clone);
+  });
 }
 
 async function getJsonData() {
-  const response = await fetch(settings.endpoint + "?max=100", {
+  const response = await fetch(settings.beers + "?max=100", {
     method: "get",
     headers: {
       "Content-Type": "application/json; charset=utf-8",
@@ -29,6 +76,7 @@ async function getJsonData() {
   });
   jsonData = await response.json();
   console.log(jsonData);
+  showBeers();
 }
 
 async function post(data) {

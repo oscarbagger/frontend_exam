@@ -9,10 +9,70 @@
       crossorigin="anonymous"
     ></script>
     <link rel="stylesheet" href="/static/style.scss" />
-    <title>Document</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Poppins&display=swap"
+      rel="stylesheet"
+    />
+    <title>Order form</title>
   </head>
   <body>
-    <main></main>
+    <!--<nav id="orderNav">
+      <div>Cart</div>
+      <div>Order</div>
+    </nav> -->
+    <main>
+      <form>
+        <fieldset id="orderBeer">
+          <legend>Order Beer</legend>
+          <div id="beerList"></div>
+        </fieldset>
+        <fieldset id="payment">
+          <legend>Payment</legend>
+          <!--<label for="fname">Name on Card</label>
+          <input type="text" id="fname" name="fname" value="John" /> -->
+          <label for="cardNumber">Card Number</label>
+          <input
+            type="text"
+            id="cardNumber"
+            pattern="[0-9]"
+            placeholder="•••• •••• •••• ••••"
+          />
+          <label for="expire">Expiration</label>
+          <div class="paymentExpiration">
+            <input type="number" placeholder="mm" id="expire" max="12" />
+            <input type="number" placeholder="yy" id="expire" max="99" />
+          </div>
+          <label for="cvc">CVC</label>
+          <input type="text" id="cvc" pattern="[0-9]" placeholder="•••" />
+          <input type="submit" value="Buy" />
+        </fieldset>
+      </form>
+    </main>
+    <template>
+      <div class="beer">
+        <div class="col">
+          <img class="beerLabel" src="" alt="" />
+          <p class="beerAlc"></p>
+        </div>
+        <div class="colRight">
+          <h3 class="beerName"></h3>
+          <p class="beerDesc"></p>
+          <div class="beerButtons">
+            <input type="button" value="-" class="beerSubtract" />
+            <input
+              type="number"
+              value="1"
+              min="1"
+              max="99"
+              class="beerAmount"
+            />
+            <input type="button" value="+" class="beerAdd" />
+            <input type="button" value="Add" class="beerOrder" />
+          </div>
+        </div>
+        <!--<input type="button" value="i" class="beerInfo" /> -->
+      </div>
+    </template>
     <script src="form.js"></script>
   </body>
 </html>

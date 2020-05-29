@@ -6,6 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "parcel index.html --open",
+    "dash": "parcel dashboard.html --open",
     "build": "parcel build *.html --public-url ./"
   },
   "keywords": [],
