@@ -16,10 +16,6 @@
     <title>Order form</title>
   </head>
   <body>
-    <!--<nav id="orderNav">
-      <div>Cart</div>
-      <div>Order</div>
-    </nav> -->
     <main>
       <form>
         <fieldset id="orderBeer">
@@ -28,8 +24,55 @@
         </fieldset>
         <fieldset id="payment">
           <legend>Payment</legend>
-          <!--<label for="fname">Name on Card</label>
-          <input type="text" id="fname" name="fname" value="John" /> -->
+          <div>
+            <h3>Your Order</h3>
+            <table id="order_items">
+              <tr>
+                <td class="order_beerName">Movintime</td>
+                <td>
+                  <input
+                    type="number"
+                    value="1"
+                    min="1"
+                    max="99"
+                    class="beerAmount"
+                  />
+                </td>
+                <td>
+                  <input type="button" value="-" class="beerSubtract" />
+                </td>
+                <td>
+                  <input type="button" value="+" class="beerAdd" />
+                </td>
+                <td>
+                  <input type="button" value="Remove" class="beerRemove" />
+                </td>
+              </tr>
+              <tr>
+                <td class="order_beerName">Santa</td>
+                <td>
+                  <input
+                    type="number"
+                    value="1"
+                    min="1"
+                    max="99"
+                    class="beerAmount"
+                  />
+                </td>
+                <td>
+                  <input type="button" value="-" class="beerSubtract" />
+                </td>
+                <td>
+                  <input type="button" value="+" class="beerAdd" />
+                </td>
+                <td>
+                  <input type="button" value="Remove" class="beerRemove" />
+                </td>
+              </tr>
+            </table>
+            <p id="orderTotal">Total: 99.00$</p>
+          </div>
+          <h3>Payment details</h3>
           <label for="cardNumber">Card Number</label>
           <input
             type="text"
@@ -72,6 +115,23 @@
         </div>
         <!--<input type="button" value="i" class="beerInfo" /> -->
       </div>
+    </template>
+    <template id="order_listItem">
+      <tr>
+        <td class="order_beerName"></td>
+        <td>
+          <input type="number" value="1" min="1" max="99" class="beerAmount" />
+        </td>
+        <td>
+          <input type="button" value="-" class="beerSubtract" />
+        </td>
+        <td>
+          <input type="button" value="+" class="beerAdd" />
+        </td>
+        <td>
+          <input type="button" value="Remove" class="beerRemove" />
+        </td>
+      </tr>
     </template>
     <script src="form.js"></script>
   </body>

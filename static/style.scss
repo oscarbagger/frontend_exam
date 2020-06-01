@@ -3,6 +3,7 @@ $font: "Poppins", sans-serif;
 $bgColor: #18171b;
 $txtColor: #eeedef;
 $activeColor: #4cca6c;
+$wrongColor: #8e3838;
 
 * {
   margin: 0 auto;
@@ -20,12 +21,40 @@ label {
   font-family: $font;
 }
 
+/****** Order Form ******/
+
 input {
   font-family: $font;
+  transition: 0.3s linear;
+}
+
+input:focus {
+  border: 4px solid $bgColor;
+  outline: 2px solid $activeColor;
+}
+
+input:valid:not(:placeholder-shown) {
+  outline: 2px solid $activeColor;
+}
+input:invalid:not(:placeholder-shown) {
+  outline: 2px solid $wrongColor;
 }
 
 input:focus::placeholder {
   color: transparent;
+}
+
+input[type="submit"] {
+  background-color: $activeColor;
+  border: none;
+  padding: 5px;
+  margin-top: 20px;
+  width: 100px;
+  font-size: 1.8rem;
+  color: $txtColor;
+  font-family: $displayFont;
+  border: 2px solid $bgColor;
+  outline: 2px solid $activeColor;
 }
 
 legend {
@@ -50,21 +79,16 @@ legend {
   color: $txtColor;
 }
 
-/****** Order Form ******/
-
 fieldset {
   display: flex;
   flex-direction: column;
   border: 2px solid $txtColor;
 }
 
-#orderBeer {
-  display: none;
-}
-
 #beerList {
   display: flex;
   flex-wrap: wrap;
+  padding-bottom: 10vh;
 }
 
 .beer {
@@ -88,12 +112,19 @@ fieldset {
   img {
     width: 120px;
   }
-  .beerButtons {
-  }
 }
 
 #payment {
+  width: 100%;
+  height: 90vh;
+  position: fixed;
+  bottom: 0;
+  background-color: $bgColor;
+  border-top: 4px solid $activeColor;
+  transition: 0.4s ease-in-out;
+  padding: 2px 10px 0px 10px;
   text-align: center;
+  color: $txtColor;
   .paymentExpiration {
     input {
       width: 5ch;
@@ -102,14 +133,6 @@ fieldset {
   #cvc {
     width: 6ch;
   }
-}
-
-#orderNav {
-  width: 100%;
-  position: fixed;
-  bottom: 0;
-  background-color: $txtColor;
-  transition: 0.2s linear;
 }
 
 /****** Dashboard ******/
